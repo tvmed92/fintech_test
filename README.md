@@ -13,13 +13,13 @@
 Чтобы запустить все тесты в приложении последовательно, введите следующую команду (браузер будет выбран приложением рандомно):
 
 
-mvn test или mvn -Dtest=TestFirst,TestSecond test
+'''mvn test или mvn -Dtest=TestFirst,TestSecond test'''
 
 
 Чтобы запустить тесты в определенном браузере (например в Chrome), введите команду:
 
 
-mvn -Dtest=TestFirst,TestSecond -Dbrowser=chrome test
+'''mvn -Dtest=TestFirst,TestSecond -Dbrowser=chrome test'''
 
 
 Для запуска тестов в других браузерах необходимо заменить параметр chrome в -Dbrowser= на желаемый (firefox, opera).
