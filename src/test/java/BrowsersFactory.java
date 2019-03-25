@@ -4,6 +4,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.opera.OperaOptions;
 
 
 public enum BrowsersFactory {
@@ -30,13 +31,15 @@ public enum BrowsersFactory {
     opera {
         public WebDriver create() {
             updateProperty("opera");
-            OperaDriver operaDriver = new OperaDriver();
-            operaDriver.get("http://selenium2.ru/");
-            return new OperaDriver();
+            OperaOptions options = new OperaOptions();
+            options.setBinary(System.getProperty("bin-opera"));
+            options.addArguments("--disable-notifications");
+            return new OperaDriver(options);
         }
     };
 
     public WebDriver create() {
+
         return null;
     }
 

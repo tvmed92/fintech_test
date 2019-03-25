@@ -7,19 +7,20 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseRunner {
     WebDriver driver;
-    public String browserName = System.getProperty("browser");
     String baseUrl;
+    public String browserName = System.getProperty("browser");
 
     @Before
     public void setUp() {
+        baseUrl = "https://www.tinkoff.ru/career/vacancies/";
         driver = getDriver();
         driver.manage().window().maximize();
-        baseUrl = "https://www.tinkoff.ru/career/vacancies/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @After
     public void tearDown() {
+
         driver.quit();
     }
 
