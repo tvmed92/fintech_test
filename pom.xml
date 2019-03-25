@@ -19,6 +19,11 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M1</version>
+                </plugin>
         </plugins>
     </build>
 
@@ -49,7 +54,6 @@
 
     <properties>
         <selenium.test.webbrowser>firefox</selenium.test.webbrowser>
-
         <selenium.test.jvmargs><![CDATA[-Dbrowser=${selenium.test.webbrowser}]]></selenium.test.jvmargs>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
