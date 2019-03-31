@@ -25,7 +25,7 @@ public class BaseRunner {
 
     public WebDriver getDriver() {
         try {
-            BrowsersFactory.valueOf(System.getProperty("browser"));
+            BrowsersFactory.valueOf(browserName);
         } catch (NullPointerException | IllegalArgumentException e) {
             browserName = randomBrowserPicker();
             System.setProperty("browser", browserName);

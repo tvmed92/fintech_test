@@ -9,32 +9,35 @@ public class TestSecond extends BaseRunner {
     public void testSecond() {
         driver.get(baseUrl);
 
-        driver.findElement(By.name("name")).click();
-        driver.findElement(By.name("name")).sendKeys("ttt");
-        driver.findElement(By.name("birthday")).click();
-        driver.findElement(By.name("birthday")).sendKeys("12.12.2020");
-        driver.findElement(By.name("city")).click();
-        driver.findElement(By.name("city")).sendKeys("123456");
-        driver.findElement(By.name("email")).click();
-        driver.findElement(By.name("email")).sendKeys("пролдж");
-        driver.findElement(By.name("phone")).click();
-        driver.findElement(By.name("phone")).sendKeys("+7(000) 000-00-00");
-        driver.findElement(By.name("socialLink0")).click();
-        driver.findElement(By.cssSelector("svg.ui-icon-checkbox.ui-checkbox__icon")).click();
+        sendKeys("name", "ttt");
+        sendKeys("birthday", "12.12.2020");
+        sendKeys("city", "123456");
+        sendKeys("email", "пролдж");
+        sendKeys("phone", "+7(000) 000-00-00");
+        driver.findElement(By.xpath("//button[span[@class='Button__content_3MlYx']]")).click();
 
-        assertEquals("Допустимо использовать только буквы русского алфавита и дефис",
-                driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Фамилия и имя'])[1]/following::div[2]")).getText());
-        assertEquals("Мы не нанимаем пришельцев из будущего",
-                driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Дата рождения'])[1]/following::div[3]")).getText());
-        assertEquals("Введите корректный адрес эл. почты",
-                driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Электронная почта'])[1]/following::div[2]")).getText());
-        assertEquals("Код города/оператора должен начинаться с цифры 3, 4, 5, 6, 8, 9",
-                driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Мобильный телефон'])[1]/following::div[2]")).getText());
+        checkText("(//div[@data-qa-file='UIFormRowError'])[1]",
+                "Допустимо использовать только буквы русского алфавита и дефис");
+        checkText("(//div[@data-qa-file='UIFormRowError'])[2]",
+                "Мы не нанимаем пришельцев из будущего");
+        checkText("(//div[@data-qa-file='UIFormRowError'])[3]",
+                "Введите корректный адрес эл. почты");
+        checkText("(//div[@data-qa-file='UIFormRowError'])[4]",
+                "Код города/оператора должен начинаться с цифры 3, 4, 5, 6, 8, 9");
 
-        driver.findElement(By.name("birthday")).click();
-        driver.findElement(By.name("birthday")).sendKeys("41.12.2018");
-        assertEquals("Поле заполнено некорректно",
-                driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Дата рождения'])[1]/following::div[3]")).getText());
+        sendKeys("birthday", "41.12.2018");
+        driver.findElement(By.xpath("//button[span[@class='Button__content_3MlYx']]")).click();
+        checkText("(//div[@data-qa-file='UIFormRowError'])[2]",
+                "Поле заполнено некорректно");
 
+    }
+
+    private void sendKeys(String name, String value) {
+        driver.findElement(By.name(name)).sendKeys(value);
+    }
+
+    private void checkText(String xpath, String expected) {
+        assertEquals(expected,
+                driver.findElement(By.xpath(xpath)).getText());
     }
 }

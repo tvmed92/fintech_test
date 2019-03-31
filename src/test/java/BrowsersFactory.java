@@ -26,16 +26,16 @@ public enum BrowsersFactory {
             options.addPreference("dom.webnotifications.enabled", false);
             return new FirefoxDriver(options);
         }
-    },
-    opera {
-        public WebDriver create() {
-            updateProperty("opera");
-            OperaOptions options = new OperaOptions();
-            options.setBinary(System.getProperty("bin-opera"));
-            options.addArguments("--disable-notifications");
-            return new OperaDriver(options);
-        }
     };
+//    opera {
+//        public WebDriver create() {
+//            updateProperty("opera");
+//            OperaOptions options = new OperaOptions();
+//            options.setBinary(System.getProperty("bin-opera"));
+//            options.addArguments("--disable-notifications");
+//            return new OperaDriver(options);
+//        }
+//    };
 
     public WebDriver create() {
 
@@ -44,6 +44,6 @@ public enum BrowsersFactory {
 
     void updateProperty(String browserName) {
         System.out.println(String.format("\nstarting %s-browser......", browserName));
-        if (System.getProperty("browser") == null) System.setProperty("browser", browserName);
+        if (System.getProperty(browserName) == null) System.setProperty("browser", browserName);
     }
 }
