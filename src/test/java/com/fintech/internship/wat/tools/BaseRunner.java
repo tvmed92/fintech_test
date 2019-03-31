@@ -1,3 +1,5 @@
+package com.fintech.internship.wat.tools;
+
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -6,8 +8,8 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class BaseRunner {
-    WebDriver driver;
-    String baseUrl;
+    public WebDriver driver;
+    public String baseUrl;
     public String browserName = System.getProperty("browser");
 
     @Before
