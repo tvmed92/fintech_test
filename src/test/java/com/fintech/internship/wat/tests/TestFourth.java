@@ -39,27 +39,6 @@ public class TestFourth extends BaseRunner {
         clickElement("//span[@class='ui-dropdown-field-list__item-text'][text()='Безлимитные минуты']");
 
 
-//        driver.findElement(By.cssSelector("(//div[@data-qa-type='uikit/checkbox'])[1]")).click();
-//        driver.findElement(By.cssSelector("(//div[@data-qa-type='uikit/checkbox'])[1]")).click();
-
-//        clickElement("(.//*[normalize-space(text()) and normalize-space(.)='Безлимитный интернет в приложениях'])[1]/following::div[6]");
-//        clickElement("(.//*[normalize-space(text()) and normalize-space(.)='?'])[1]/following::div[7]");
-//        clickElement("(.//*[normalize-space(text()) and normalize-space(.)='Выберите пакеты услуг'])[1]/following::h3[1]");
-//
-//        String price3 = driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Выберите пакеты услуг'])[1]/following::h3[1]")).getText();
-//
-//        clickElement("(.//*[normalize-space(text()) and normalize-space(.)='Точки продаж'])[1]/following::div[13]");
-//        clickElement("(.//*[normalize-space(text()) and normalize-space(.)='Город'])[1]/following::div[5]");
-//        clickElement("(.//*[normalize-space(text()) and normalize-space(.)='Интернет'])[1]/following::div[2]");
-//        clickElement("(.//*[normalize-space(text()) and normalize-space(.)='Выберите пакеты услуг'])[1]/following::div[5]");
-//        clickElement("(.//*[normalize-space(text()) and normalize-space(.)='Безлимитный интернет'])[3]/following::div[7]");
-//        clickElement("(.//*[normalize-space(text()) and normalize-space(.)='Выберите пакеты услуг'])[1]/following::form[1]");
-//        clickElement("(.//*[normalize-space(text()) and normalize-space(.)='Безлимитный интернет в приложениях'])[1]/following::div[6]");
-//        clickElement("(.//*[normalize-space(text()) and normalize-space(.)='?'])[1]/following::div[7]");
-//        clickElement("(.//*[normalize-space(text()) and normalize-space(.)='Выберите пакеты услуг'])[1]/following::h3[1]");
-//
-//        String price4 = driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Выберите пакеты услуг'])[1]/following::h3[1]")).getText();
-
     }
 
     private void clickElement(String s) {

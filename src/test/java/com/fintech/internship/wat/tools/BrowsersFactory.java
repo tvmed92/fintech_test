@@ -17,27 +17,9 @@ public enum BrowsersFactory {
             options.addArguments("--disable-notifications");
             return new ChromeDriver(options);
         }
-//    },
-//    firefox {
-//        public WebDriver create() {
-//            updateProperty("firefox");
-//            System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
-//            System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "./src/test/java/log");
-//
-//            FirefoxOptions options = new FirefoxOptions();
-//            options.addPreference("dom.webnotifications.enabled", false);
-//            return new FirefoxDriver(options);
-//        }
+
     };
-//    opera {
-//        public WebDriver create() {
-//            updateProperty("opera");
-//            OperaOptions options = new OperaOptions();
-//            options.setBinary(System.getProperty("bin-opera"));
-//            options.addArguments("--disable-notifications");
-//            return new OperaDriver(options);
-//        }
-//    };
+
 
     public WebDriver create() {
 

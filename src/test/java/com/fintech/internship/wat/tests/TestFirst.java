@@ -21,8 +21,8 @@ public class TestFirst extends BaseRunner {
         driver.findElement(By.cssSelector("svg.ui-icon-checkbox.ui-checkbox__icon")).click();
         driver.findElement(By.xpath("//button[span[@class='Button__content_3MlYx']]")).click();
 
-        for (int i = 1; i <= 6; i++){
-            checkText("(//div[@data-qa-file='UIFormRowError'])["+ i +"]", "Поле обязательное");
+        for (int i = 1; i <= 6; i++) {
+            checkText("(//div[@data-qa-file='UIFormRowError'])[" + i + "]", "Поле обязательное");
         }
     }
 
