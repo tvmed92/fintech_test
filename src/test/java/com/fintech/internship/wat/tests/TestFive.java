@@ -15,11 +15,8 @@ public class TestFive extends BaseRunner {
         driver.get(tinkoffMobileUrl);
         selectElementFromDropdown("internet", "0 ГБ");
         selectElementFromDropdown("calls", "0 минут");
-        setDeactiveCheckBox("Мессенджеры (59 \u20BD)");
-        setDeactiveCheckBox("Социальные сети (59 \u20BD)");
-//        setDeactiveCheckBox("Музыка (59 \u20BD)");
-//        setDeactiveCheckBox("Видео (159 \u20BD)");
-//        setDeactiveCheckBox("Безлимитные СМС (49 \u20BD)");
+        setDeactivateCheckBox("Мессенджеры (59 \u20BD)");
+        setDeactivateCheckBox("Социальные сети (59 \u20BD)");
         String price5 = driver.findElement(By.xpath("//h3[@data-qa-file='UITitle']")).getText();
         Assert.assertEquals(price5, "Общая цена: 0 \u20BD");
 
@@ -46,9 +43,7 @@ public class TestFive extends BaseRunner {
         }
     }
 
-    private void setDeactiveCheckBox(String labelName) {
-//        if (driver.findElement(By.xpath("//label[text()='" + labelName + "']")).isSelected()) {
+    private void setDeactivateCheckBox(String labelName) {
         driver.findElement(By.xpath("//label[text()='" + labelName + "']")).click();
-//        }
     }
 }

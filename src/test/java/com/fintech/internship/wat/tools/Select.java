@@ -5,7 +5,10 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class Select extends BaseRunner{
+import static com.fintech.internship.wat.tools.BaseRunner.clickElement;
+import static com.fintech.internship.wat.tools.BaseRunner.driver;
+
+public class Select {
 
     public static String selectElementFromDropdown(String listName, String value) {
         driver.get("https://www.tinkoff.ru/mobile-operator/tariffs/");

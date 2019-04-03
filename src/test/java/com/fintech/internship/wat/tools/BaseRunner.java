@@ -16,7 +16,7 @@ public class BaseRunner {
     protected static WebDriver driver;
     protected WebDriverWait wait;
     private String browserName = System.getProperty("browser");
-    public String tinkoffMobileUrl;
+    protected String tinkoffMobileUrl;
     protected String tinkoffVacanciesUrl;
     protected String googleUrl;
 
@@ -63,32 +63,4 @@ public class BaseRunner {
         assertEquals(expected,
                 driver.findElement(By.xpath(xpath)).getText());
     }
-//
-//    public void setActiveCheckBox(String labelName) {
-//        if (!driver.findElement(By.xpath("//label[text()='" + labelName + "']")).isSelected()) {
-//            driver.findElement(By.xpath("//label[text()='" + labelName + "']")).click();
-//        }
-//    }
-//
-//    public void setCity(String cityName) {
-//        clickElement("//div[@class='MvnoRegionConfirmation__title_DOqnW']");
-//        clickElement("//div[@class='Text__text_3OSYn'][text()='" + cityName + "']");
-//    }
-//
-//    public String getPrice() {
-//        return driver.findElement(By.xpath("//h3[@data-qa-file='UITitle']")).getText();
-//    }
-//
-//    public void checkCityIsRight(String cityName) {
-//        WebElement element = driver.findElement(By.xpath(
-//                "//div[@class='MvnoRegionConfirmation__title_DOqnW'][text()='" + cityName +"']"));
-//        Assert.assertTrue(element.isDisplayed());
-//    }
-//
-//    public void setMaxValues() {
-//        Select.selectElementFromDropdown("internet", "Безлимитный интернет");
-//        Select.selectElementFromDropdown("calls", "Безлимитные минуты");
-//        setActiveCheckBox("Режим модема (499\u00a0\u20BD)");
-//        setActiveCheckBox("Безлимитные СМС (49\u00a0\u20BD)");
-//    }
 }
