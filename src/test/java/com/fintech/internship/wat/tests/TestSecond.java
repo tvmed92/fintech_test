@@ -4,13 +4,11 @@ import com.fintech.internship.wat.tools.BaseRunner;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
-import static org.junit.Assert.assertEquals;
-
 public class TestSecond extends BaseRunner {
 
     @Test
     public void testSecond() {
-        driver.get(baseUrl);
+        driver.get(tinkoffVacanciesUrl);
 
         sendKeys("name", "ttt");
         sendKeys("birthday", "12.12.2020");
@@ -36,12 +34,6 @@ public class TestSecond extends BaseRunner {
     }
 
     private void sendKeys(String name, String value) {
-
         driver.findElement(By.name(name)).sendKeys(value);
-    }
-
-    private void checkText(String xpath, String expected) {
-        assertEquals(expected,
-                driver.findElement(By.xpath(xpath)).getText());
     }
 }

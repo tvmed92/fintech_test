@@ -1,6 +1,7 @@
 package com.fintech.internship.wat.tests;
 
 import com.fintech.internship.wat.tools.BaseRunner;
+import com.fintech.internship.wat.tools.Select;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -10,43 +11,47 @@ import java.util.List;
 
 //класс без рефакторинга
 
-
 public class TestFourth extends BaseRunner {
 
     @Test
     public void testFourth() {
-        driver.get("https://www.tinkoff.ru/mobile-operator/tariffs/");
+        driver.get(tinkoffMobileUrl);
 
         clickElement("//span[@class='MvnoRegionConfirmation__option_v9PfP']");
-
-        WebElement city = driver.findElement(By.xpath(
-                "//div[@class='MvnoRegionConfirmation__title_DOqnW'][text()='Москва и Московская область']"));
-        Assert.assertTrue(city.isDisplayed());
+        checkCityIsRight("Москва и Московская область");
 
         driver.navigate().refresh();
-        WebElement city1 = driver.findElement(By.xpath(
-                "//div[@class='MvnoRegionConfirmation__title_DOqnW'][text()='Москва и Московская область']"));
-        Assert.assertTrue(city1.isDisplayed());
+        checkCityIsRight("Москва и Московская область");
 
-        String price1 = driver.findElement(By.xpath("//h3[@data-qa-file='UITitle']")).getText();
+        String price1 = getPrice();
         setCity("Краснодарский кр.");
-        String price2 = driver.findElement(By.xpath("//h3[@data-qa-file='UITitle']")).getText();
+        String price2 = getPrice();
         Assert.assertNotSame(price1, price2);
 
-
-        selectElementFromDropdown("internet", "Безлимитный интернет");
-        selectElementFromDropdown("calls", "Безлимитные минуты");
-        setActiveCheckBox("Режим модема (499 \u20BD)");
-        setActiveCheckBox("Безлимитные СМС (49 \u20BD)");
-        String price3 = driver.findElement(By.xpath("//h3[@data-qa-file='UITitle']")).getText();
+        setMaxValues();
+        String price3 = getPrice();
         setCity("Москва и Московская обл.");
-        selectElementFromDropdown("internet", "Безлимитный интернет");
-        selectElementFromDropdown("calls", "Безлимитные минуты");
-        setActiveCheckBox("Режим модема (499 \u20BD)");
-        setActiveCheckBox("Безлимитные СМС (49 \u20BD)");
-        String price4 = driver.findElement(By.xpath("//h3[@data-qa-file='UITitle']")).getText();
+        setMaxValues();
+        String price4 = getPrice();
         Assert.assertSame(price3, price4);
 
+    }
+
+    private void setMaxValues() {
+        Select.selectElementFromDropdown("internet", "Безлимитный интернет");
+        Select.selectElementFromDropdown("calls", "Безлимитные минуты");
+        setActiveCheckBox("Режим модема (499\u00a0\u20BD)");
+        setActiveCheckBox("Безлимитные СМС (49\u00a0\u20BD)");
+    }
+
+    private String getPrice() {
+        return driver.findElement(By.xpath("//h3[@data-qa-file='UITitle']")).getText();
+    }
+
+    private void checkCityIsRight(String cityName) {
+        WebElement element = driver.findElement(By.xpath(
+                "//div[@class='MvnoRegionConfirmation__title_DOqnW'][text()='" + cityName +"']"));
+        Assert.assertTrue(element.isDisplayed());
     }
 
     private void setCity(String cityName) {
@@ -60,20 +65,15 @@ public class TestFourth extends BaseRunner {
         }
     }
 
-
-    private void selectElementFromDropdown(String listName, String value) {
-        clickElement("//div[@data-qa-file='UIDropdownSelectActive'][select[@name='" + listName + "']]");
-        By listItems = By.xpath("//div[@class='ui-dropdown-field-list__item']");
-        List<WebElement> items = driver.findElements(listItems);
-        for (WebElement element : items) {
-            if (element.getText().contains(value)) {
-                element.click();
-                break;
-            }
-        }
-    }
-
-    private void clickElement(String s) {
-        driver.findElement(By.xpath(s)).click();
-    }
+//    private void selectElementFromDropdown(String listName, String value) {
+//        clickElement("//div[@data-qa-file='UIDropdownSelectActive'][select[@name='" + listName + "']]");
+//        By listItems = By.xpath("//div[@class='ui-dropdown-field-list__item']");
+//        List<WebElement> items = driver.findElements(listItems);
+//        for (WebElement element : items) {
+//            if (element.getText().contains(value)) {
+//                element.click();
+//                break;
+//            }
+//        }
+//    }
 }

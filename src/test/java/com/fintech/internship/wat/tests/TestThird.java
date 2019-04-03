@@ -14,7 +14,7 @@ public class TestThird extends BaseRunner {
 
     @Test
     public void testThird() {
-        driver.get("https://google.ru/");
+        driver.get(googleUrl);
         driver.findElement(By.xpath("//input[@class='gLFyf gsfi']"))
                 .sendKeys("мобайл тинькофф");
         driver.findElement(By.xpath("//span[text()='мобайл тинькофф']/b[text()=' тарифы']")).click();
@@ -54,6 +54,6 @@ public class TestThird extends BaseRunner {
         });
 
         driver.switchTo().window(driver.getWindowHandles().iterator().next());
-        wait.until(d -> driver.getCurrentUrl().equals("https://www.tinkoff.ru/mobile-operator/tariffs/"));
+        wait.until(d -> driver.getCurrentUrl().equals(tinkoffMobileUrl));
     }
 }
