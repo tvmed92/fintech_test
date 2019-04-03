@@ -6,7 +6,9 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-//класс не доведен до конца и без рефакторинга
+import java.util.List;
+
+//класс без рефакторинга
 
 
 public class TestFourth extends BaseRunner {
@@ -27,18 +29,47 @@ public class TestFourth extends BaseRunner {
         Assert.assertTrue(city1.isDisplayed());
 
         String price1 = driver.findElement(By.xpath("//h3[@data-qa-file='UITitle']")).getText();
-        clickElement("//div[@class='MvnoRegionConfirmation__title_DOqnW']");
-        clickElement("//div[@class='Text__text_3OSYn'][text()='Краснодарский кр.']");
-
+        setCity("Краснодарский кр.");
         String price2 = driver.findElement(By.xpath("//h3[@data-qa-file='UITitle']")).getText();
         Assert.assertNotSame(price1, price2);
 
-        clickElement("//div[@data-qa-file='UISelectTitle'][span[text()='Интернет']]/..");
-        clickElement("//span[@class='ui-dropdown-field-list__item-text'][text()='Безлимитный интернет']");
-        clickElement("//div[@data-qa-file='UISelectTitle'][span[text()='Звонки']]/..");
-        clickElement("//span[@class='ui-dropdown-field-list__item-text'][text()='Безлимитные минуты']");
 
+        selectElementFromDropdown("internet", "Безлимитный интернет");
+        selectElementFromDropdown("calls", "Безлимитные минуты");
+        setActiveCheckBox("Режим модема (499 \u20BD)");
+        setActiveCheckBox("Безлимитные СМС (49 \u20BD)");
+        String price3 = driver.findElement(By.xpath("//h3[@data-qa-file='UITitle']")).getText();
+        setCity("Москва и Московская обл.");
+        selectElementFromDropdown("internet", "Безлимитный интернет");
+        selectElementFromDropdown("calls", "Безлимитные минуты");
+        setActiveCheckBox("Режим модема (499 \u20BD)");
+        setActiveCheckBox("Безлимитные СМС (49 \u20BD)");
+        String price4 = driver.findElement(By.xpath("//h3[@data-qa-file='UITitle']")).getText();
+        Assert.assertSame(price3, price4);
 
+    }
+
+    private void setCity(String cityName) {
+        clickElement("//div[@class='MvnoRegionConfirmation__title_DOqnW']");
+        clickElement("//div[@class='Text__text_3OSYn'][text()='" + cityName + "']");
+    }
+
+    private void setActiveCheckBox(String labelName) {
+        if (!driver.findElement(By.xpath("//label[text()='" + labelName + "']")).isSelected()) {
+            driver.findElement(By.xpath("//label[text()='" + labelName + "']")).click();
+        }
+    }
+
+    private void selectElementFromDropdown(String listName, String value) {
+        clickElement("//div[@data-qa-file='UIDropdownSelectActive'][select[@name='" + listName + "']]");
+        By listItems = By.xpath("//div[@class='ui-dropdown-field-list__item']");
+        List<WebElement> items = driver.findElements(listItems);
+        for (WebElement element : items) {
+            if (element.getText().contains(value)) {
+                element.click();
+                break;
+            }
+        }
     }
 
     private void clickElement(String s) {

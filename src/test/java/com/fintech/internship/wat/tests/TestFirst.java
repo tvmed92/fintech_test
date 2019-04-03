@@ -1,6 +1,7 @@
 package com.fintech.internship.wat.tests;
 
 import com.fintech.internship.wat.tools.BaseRunner;
+import com.fintech.internship.wat.tools.Helper;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
