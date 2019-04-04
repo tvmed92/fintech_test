@@ -37,9 +37,14 @@ public class TestFourth extends BaseRunner {
 
     }
 
+    private WebElement initDropdown(String labelText) {
+        String selector = String.format("//*[@data-qa-file='UIDropdownSelect' and .//*[text()='%s']]", labelText);
+        return driver.findElement(By.xpath(selector));
+    }
+
     private void setMaxValues() {
-        selectElementFromDropdown("internet", "Безлимитный интернет");
-        selectElementFromDropdown("calls", "Безлимитные минуты");
+        new Select(driver, initDropdown("Интернет")).selectElementFromDropdown("Безлимитный интернет");
+        new Select(driver, initDropdown("Звонки")).selectElementFromDropdown("Безлимитнфе минуты");
         setActiveCheckBox("Режим модема (499\u00a0\u20BD)");
         setActiveCheckBox("Безлимитные СМС (49\u00a0\u20BD)");
     }
@@ -65,15 +70,15 @@ public class TestFourth extends BaseRunner {
         }
     }
 
-    private void selectElementFromDropdown(String listName, String value) {
-        clickElement("//div[@data-qa-file='UIDropdownSelectActive'][select[@name='" + listName + "']]");
-        By listItems = By.xpath("//div[@class='ui-dropdown-field-list__item']");
-        List<WebElement> items = driver.findElements(listItems);
-        for (WebElement element : items) {
-            if (element.getText().contains(value)) {
-                element.click();
-                break;
-            }
-        }
-    }
+//    private void selectElementFromDropdown(String listName, String value) {
+//        clickElement("//div[@data-qa-file='UIDropdownSelectActive'][select[@name='" + listName + "']]");
+//        By listItems = By.xpath("//div[@class='ui-dropdown-field-list__item']");
+//        List<WebElement> items = driver.findElements(listItems);
+//        for (WebElement element : items) {
+//            if (element.getText().contains(value)) {
+//                element.click();
+//                break;
+//            }
+//        }
+//    }
 }

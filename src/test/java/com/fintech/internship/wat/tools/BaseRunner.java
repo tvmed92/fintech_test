@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 
 public class BaseRunner {
-    protected static WebDriver driver;
+    protected WebDriver driver;
     protected WebDriverWait wait;
     private String browserName = System.getProperty("browser");
     protected String tinkoffMobileUrl;
@@ -51,15 +51,15 @@ public class BaseRunner {
         return BrowsersFactory.valueOf(browserName).create();
     }
 
-    public static void clickElement(String xpath) {
+    public void clickElement(String xpath) {
         driver.findElement(By.xpath(xpath)).click();
     }
 
-    public static void clickElementByName(String name) {
+    public void clickElementByName(String name) {
         driver.findElement(By.name(name)).click();
     }
 
-    public static void checkText(String xpath, String expected) {
+    public void checkText(String xpath, String expected) {
         assertEquals(expected,
                 driver.findElement(By.xpath(xpath)).getText());
     }
