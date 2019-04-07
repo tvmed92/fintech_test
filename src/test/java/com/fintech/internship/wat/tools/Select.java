@@ -24,10 +24,6 @@ public class Select extends BaseElement {
     }
 
     public void selectElementFromDropdown(String value) {
-//        driver.get("https://www.tinkoff.ru/mobile-operator/tariffs/");
-//        super.getEnclosedElement().click();
-//        clickElement("//div[@data-qa-file='UIDropdownSelectActive'][select[@name='"+ listName +"']]");
-//        By listItems = By.xpath("//div[@class='ui-dropdown-field-list__item']");
         expandDropdown();
         List<WebElement> items = getListItems();
         for (WebElement element : items) {

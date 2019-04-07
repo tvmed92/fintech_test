@@ -1,15 +1,13 @@
 package com.fintech.internship.wat.tests;
 
 import com.fintech.internship.wat.tools.BaseRunner;
+import com.fintech.internship.wat.tools.CheckBox;
 import com.fintech.internship.wat.tools.Select;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
-
-//класс без рефакторинга
 
 public class TestFourth extends BaseRunner {
 
@@ -33,7 +31,7 @@ public class TestFourth extends BaseRunner {
         setCity("Москва и Московская обл.");
         setMaxValues();
         String price4 = getPrice();
-        Assert.assertSame(price3, price4);
+        Assert.assertEquals(price3, price4);
 
     }
 
@@ -42,11 +40,16 @@ public class TestFourth extends BaseRunner {
         return driver.findElement(By.xpath(selector));
     }
 
+    private WebElement initCheckBox(String labelText) {
+        String checkBoxSelector = String.format("//*[@class='CheckboxWithDescription__checkbox_2E0r_'][label[contains(text(), '%s')]]", labelText);
+        return driver.findElement(By.xpath(checkBoxSelector));
+    }
+
     private void setMaxValues() {
         new Select(driver, initDropdown("Интернет")).selectElementFromDropdown("Безлимитный интернет");
-        new Select(driver, initDropdown("Звонки")).selectElementFromDropdown("Безлимитнфе минуты");
-        setActiveCheckBox("Режим модема (499\u00a0\u20BD)");
-        setActiveCheckBox("Безлимитные СМС (49\u00a0\u20BD)");
+        new Select(driver, initDropdown("Звонки")).selectElementFromDropdown("Безлимитные минуты");
+        new CheckBox(driver, initCheckBox("Режим модема")).setActive();
+        new CheckBox(driver, initCheckBox("Безлимитные СМС")).setActive();
     }
 
     private String getPrice() {
@@ -63,22 +66,4 @@ public class TestFourth extends BaseRunner {
         clickElement("//div[@class='MvnoRegionConfirmation__title_DOqnW']");
         clickElement("//div[@class='Text__text_3OSYn'][text()='" + cityName + "']");
     }
-
-    private void setActiveCheckBox(String labelName) {
-        if (!driver.findElement(By.xpath("//label[text()='" + labelName + "']")).isSelected()) {
-            driver.findElement(By.xpath("//label[text()='" + labelName + "']")).click();
-        }
-    }
-
-//    private void selectElementFromDropdown(String listName, String value) {
-//        clickElement("//div[@data-qa-file='UIDropdownSelectActive'][select[@name='" + listName + "']]");
-//        By listItems = By.xpath("//div[@class='ui-dropdown-field-list__item']");
-//        List<WebElement> items = driver.findElements(listItems);
-//        for (WebElement element : items) {
-//            if (element.getText().contains(value)) {
-//                element.click();
-//                break;
-//            }
-//        }
-//    }
 }
