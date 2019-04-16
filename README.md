@@ -7,16 +7,10 @@
 ----------------------------------------
 Для запуска тестов из командной строки перейдите в корневую директорию.
 
-Чтобы запустить все тесты в приложении последовательно, введите следующую команду:
+Чтобы запустить все тесты в приложении последовательно, введите следующую команду (тесты будут выполняться в браузере Chrome):
 
 
-```mvn test или mvn -Dtest=TestFirst,TestSecond,TestThird,TestFourth test```
+```mvn test или mvn -Dtest=TestFirst,TestSecond,TestThird,TestFourth,TestFive test```
 
 
-Чтобы запустить тесты в браузере Chrome, введите команду:
-
-
-```mvn -Dtest=TestFirst,TestSecond,TestThird,TestFourth -Dbrowser=chrome test```
-
-
-Для запуска одного из тестов введите имя нужного теста в качестве параметра в -Dtest= (TestFirst, TestSecond, TestThird, TestFourth).
+Для запуска одного из тестов введите имя нужного теста в качестве параметра в -Dtest= (TestFirst, TestSecond, TestThird, TestFourth, TestFive).
