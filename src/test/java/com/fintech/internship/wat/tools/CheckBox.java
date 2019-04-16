@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class CheckBox extends BaseElement {
-    private static By activeElementLocator = By.cssSelector("[class='CheckboxWithDescription__checkbox_2E0r_']");
+    private static By activeElementLocator = By.cssSelector("[data-qa-type='uikit/checkbox']");
     private WebElement checkBox;
 
     public CheckBox(WebDriver enclosedDriver, WebElement enclosedElement) {
@@ -14,22 +14,8 @@ public class CheckBox extends BaseElement {
         this.checkBox = getEnclosedElement().findElement(activeElementLocator);
     }
 
-//    public boolean isActive() {
-////        WebElement checkBox = getEnclosedElement().findElement(activeElementLocator);
-//        return checkBox.isSelected();}
-//
-//    public boolean isInactive() {
-////        WebElement checkBox = getEnclosedElement().findElement(activeElementLocator);
-//        return !checkBox.isSelected();}
-
-    public void setActive() {
+    public void setActiveOrInactive() {
         if (!checkBox.isSelected()) {
-            checkBox.click();
-        }
-    }
-
-    public void setInactive() {
-        if (checkBox.isSelected()) {
             checkBox.click();
         }
     }

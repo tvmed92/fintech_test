@@ -16,8 +16,8 @@ public class TestThird extends BaseRunner {
     public void testThird() {
         driver.get(googleUrl);
         driver.findElement(By.xpath("//input[@class='gLFyf gsfi']"))
-                .sendKeys("мобайл тинькофф");
-        driver.findElement(By.xpath("//span[text()='мобайл тинькофф']/b[text()=' тарифы']")).click();
+                .sendKeys("мобайл тинькофф ");
+        driver.findElement(By.xpath("//span[b[text()='tinkoff mobile тарифы']]")).click();
         By listItems = By.xpath("//div//h3[@class='LC20lb'][text()='Тарифы Тинькофф Мобайла']");
         List<WebElement> items = driver.findElements(listItems);
         wait
@@ -44,7 +44,7 @@ public class TestThird extends BaseRunner {
             boolean check = false;
             for (String title : driver.getWindowHandles()) {
                 driver.switchTo().window(title);
-                check = d.getTitle().equals("мобайл тинькофф тарифы - Поиск в Google");
+                check = d.getTitle().equals("tinkoff mobile тарифы - Поиск в Google");
                 if (check) {
                     driver.close();
                     break;

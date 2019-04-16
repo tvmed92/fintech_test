@@ -41,15 +41,15 @@ public class TestFourth extends BaseRunner {
     }
 
     private WebElement initCheckBox(String labelText) {
-        String checkBoxSelector = String.format("//*[@class='CheckboxWithDescription__checkbox_2E0r_'][label[contains(text(), '%s')]]", labelText);
+        String checkBoxSelector = String.format("//*[@class='CheckboxWithDescription__checkbox_2E0r_'][label[contains(text(),'%s')]]", labelText);
         return driver.findElement(By.xpath(checkBoxSelector));
     }
 
     private void setMaxValues() {
         new Select(driver, initDropdown("Интернет")).selectElementFromDropdown("Безлимитный интернет");
         new Select(driver, initDropdown("Звонки")).selectElementFromDropdown("Безлимитные минуты");
-        new CheckBox(driver, initCheckBox("Режим модема")).setActive();
-        new CheckBox(driver, initCheckBox("Безлимитные СМС")).setActive();
+        new CheckBox(driver, initCheckBox("Режим модема")).setActiveOrInactive();
+        new CheckBox(driver, initCheckBox("Безлимитные СМС")).setActiveOrInactive();
     }
 
     private String getPrice() {
@@ -58,7 +58,7 @@ public class TestFourth extends BaseRunner {
 
     private void checkCityIsRight(String cityName) {
         WebElement element = driver.findElement(By.xpath(
-                "//div[@class='MvnoRegionConfirmation__title_DOqnW'][text()='" + cityName +"']"));
+                "//div[@class='MvnoRegionConfirmation__title_DOqnW'][text()='" + cityName + "']"));
         Assert.assertTrue(element.isDisplayed());
     }
 

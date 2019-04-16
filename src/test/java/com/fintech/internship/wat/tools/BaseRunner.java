@@ -1,11 +1,9 @@
 package com.fintech.internship.wat.tools;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
@@ -59,8 +57,9 @@ public class BaseRunner {
         driver.findElement(By.name(name)).click();
     }
 
-    public void checkText(String xpath, String expected) {
+    public void checkText(String labelName, String expected) {
+        String textSelector = String.format("//span[text()='%s']/ancestor::div[@class='ui-form__field']//div[@data-qa-file='UIFormRowError']", labelName);
         assertEquals(expected,
-                driver.findElement(By.xpath(xpath)).getText());
+                driver.findElement(By.xpath(textSelector)).getText());
     }
 }
