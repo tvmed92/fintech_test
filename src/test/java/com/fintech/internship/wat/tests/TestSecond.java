@@ -11,7 +11,7 @@ package com.fintech.internship.wat.tests;
 //        new TextInput(driver, initTextField("Город проживания")).sendKeys("123456");
 //        new TextInput(driver, initTextField("Электронная почта")).sendKeys("пролдж");
 //        new TextInput(driver, initTextField("Мобильный телефон")).sendKeys("+7(000) 000-00-00");
-//        clickElement("//button[span[@class='Button__content_3MlYx']]");
+//        clickElementByName("//button[span[@class='Button__content_3MlYx']]");
 //
 //        checkText("Фамилия и имя", "Допустимо использовать только буквы русского алфавита и дефис");
 //        checkText("Дата рождения", "Мы не нанимаем пришельцев из будущего");
@@ -20,7 +20,7 @@ package com.fintech.internship.wat.tests;
 //
 //        driver.findElement(By.xpath("//*[@class='ui-input__label'][span[contains(text(),'Дата рождения')]]")).clear();
 //        new TextInput(driver, initTextField("Дата рождения")).sendKeys("41.12.2018");
-//        clickElement("//button[span[@class='Button__content_3MlYx']]");
+//        clickElementByName("//button[span[@class='Button__content_3MlYx']]");
 //        checkText("Дата рождения", "Поле заполнено некорректно");
 //
 //    }

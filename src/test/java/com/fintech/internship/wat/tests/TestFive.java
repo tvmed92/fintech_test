@@ -12,7 +12,7 @@ package com.fintech.internship.wat.tests;
 //        String price5 = driver.findElement(By.xpath("//h3[@data-qa-file='UITitle']")).getText();
 //        Assert.assertEquals(price5, "Общая цена: 0 \u20BD");
 //
-//        clickElement("//button[@type='button'][span/div[text()='Заказать сим-карту']]");
+//        clickElementByName("//button[@type='button'][span/div[text()='Заказать сим-карту']]");
 //        wait.until(d -> {
 //            boolean check = false;
 //            WebElement element = driver.findElement(By.xpath("//button[@type='button'][span/div[text()='Заказать сим-карту']]"));

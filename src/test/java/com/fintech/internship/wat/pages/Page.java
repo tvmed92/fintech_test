@@ -55,7 +55,6 @@ public class Page {
     }
 
     public void switchToMainTab() {
-
         driver.switchTo().window(driver.getWindowHandles().iterator().next());
     }
 
@@ -63,17 +62,4 @@ public class Page {
         wait.until(d -> driver.getCurrentUrl().equals(url));
     }
 
-    public void clickElement(String xpath) {
-        driver.findElement(By.xpath(xpath)).click();
-    }
-
-    public void clickElementByName(String name) {
-        driver.findElement(By.name(name)).click();
-    }
-
-    public void checkText(String labelName, String expected) {
-        String textSelector = String.format("//span[text()='%s']/ancestor::div[@class='ui-form__field']//div[@data-qa-file='UIFormRowError']", labelName);
-        assertEquals(expected,
-                driver.findElement(By.xpath(textSelector)).getText());
-    }
 }

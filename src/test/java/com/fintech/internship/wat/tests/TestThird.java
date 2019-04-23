@@ -16,6 +16,7 @@ public class TestThird extends BaseRunner {
         googlePage.openSearchResultsByRequest("мобайл тинькофф ", "Тарифы Тинькофф Мобайла");
         googlePage.switchToTab("Тарифы Тинькофф Мобайла");
         TinkoffMobilePage mobilePage = testApp.mobilePage;
+//        mobilePage.checkCurrentTabUrl(tinkoffMobileUrl);
         mobilePage.switchToTab("tinkoff mobile тарифы - Поиск в Google");
         googlePage.closeCurrentTab();
         mobilePage.switchToMainTab();
@@ -34,46 +35,3 @@ public class TestThird extends BaseRunner {
 //        testApp.checkCurrentTabUrl(tinkoffMobileUrl);
     }
 }
-
-//        wait
-//                .ignoring(StaleElementReferenceException.class)
-//                .pollingEvery(Duration.ofMillis(500))
-//                .until(driver -> {
-//                    By listItems = By.xpath("//div//h3[@class='LC20lb'][text()='Тарифы Тинькофф Мобайла']");
-//                    List<WebElement> items = driver.findElements(listItems);
-//                    for (WebElement element : items) {
-//                        if (element.getText().contains("Тарифы Тинькофф Мобайла")) {
-//                            element.click();
-//                            logger.info("В результатах поиска выбрали пункт 'Тарифы Тинькофф Мобайла'");
-//                            break;
-//                        }
-//                    }
-//                    Set<String> ids = driver.getWindowHandles();
-//                    ids.forEach(id -> {
-//                        if (!id.equals(driver.getWindowHandle())) {
-//                            driver.switchTo().window(id);
-//                            logger.info("Переключились на вкладку" + driver.getTitle());
-//                        }
-//                    });
-////                    return driver.getTitle().equals("Тарифы Тинькофф Мобайла");
-//                });
-//
-//
-//        wait.until(d -> {
-//            boolean check = false;
-//            for (String title : driver.getWindowHandles()) {
-//                driver.switchTo().window(title);
-//                check = d.getTitle().equals("tinkoff mobile тарифы - Поиск в Google");
-//                if (check) {
-//                    driver.close();
-//                    logger.info("Закрыли вкладку Поиск в Google");
-//                    break;
-//                }
-//            }
-//            return check;
-//        });
-//
-//        driver.switchTo().window(driver.getWindowHandles().iterator().next());
-//        wait.until(d -> driver.getCurrentUrl().equals(tinkoffMobileUrl));
-//        logger.info("Убедились, что url активной вкладки = " + tinkoffMobileUrl);
-//    }

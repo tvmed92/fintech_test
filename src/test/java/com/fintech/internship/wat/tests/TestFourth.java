@@ -7,7 +7,7 @@ package com.fintech.internship.wat.tests;
 //    public void testFourth() {
 //        driver.get(tinkoffMobileUrl);
 //
-//        clickElement("//span[@class='MvnoRegionConfirmation__option_v9PfP']");
+//        clickElementByName("//span[@class='MvnoRegionConfirmation__option_v9PfP']");
 //        checkCityIsRight("Москва и Московская область");
 //
 //        driver.navigate().refresh();
@@ -55,7 +55,7 @@ package com.fintech.internship.wat.tests;
 //    }
 //
 //    private void setCity(String cityName) {
-//        clickElement("//div[@class='MvnoRegionConfirmation__title_DOqnW']");
-//        clickElement("//div[@class='Text__text_3OSYn'][text()='" + cityName + "']");
+//        clickElementByName("//div[@class='MvnoRegionConfirmation__title_DOqnW']");
+//        clickElementByName("//div[@class='Text__text_3OSYn'][text()='" + cityName + "']");
 //    }
 //}

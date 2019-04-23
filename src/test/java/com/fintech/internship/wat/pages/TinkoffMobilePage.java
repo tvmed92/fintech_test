@@ -9,4 +9,9 @@ public class TinkoffMobilePage extends Page {
         PageFactory.initElements(driver, this);
     }
 
+    public void openMobile() {
+        driver.navigate().to("https://www.tinkoff.ru/mobile-operator/tariffs/");
+        isLoadedByTitleContains("Тарифы Тинькофф Мобайла");
+    }
+
 }
