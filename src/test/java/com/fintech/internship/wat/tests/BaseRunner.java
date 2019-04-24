@@ -4,8 +4,6 @@ import com.fintech.internship.wat.app.TestApplication;
 import org.junit.After;
 import org.junit.Before;
 
-import static org.junit.Assert.assertEquals;
-
 public class BaseRunner {
     public static ThreadLocal<TestApplication> thlTestApp = new ThreadLocal<>();
 

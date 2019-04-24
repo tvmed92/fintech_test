@@ -1,8 +1,9 @@
 package com.fintech.internship.wat.pages;
 
-import com.fintech.internship.wat.tools.CheckBox;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.FindBy;
+import com.fintech.internship.wat.tools.TextInput;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import static org.junit.Assert.assertEquals;
@@ -22,39 +23,35 @@ public class TinkoffVacanciesPage extends Page {
         driver.findElement(By.name(name)).click();
     }
 
+    public void clickCheckBox() {
+        driver.findElement(By.cssSelector("svg.ui-icon-checkbox.ui-checkbox__icon")).click();
+    }
+
+    public void clickSendButton() {
+        driver.findElement(By.cssSelector("[type='submit']")).click();
+    }
+
     public void checkText(String xpath, String expected) {
         assertEquals(expected, driver.findElement(By.xpath(xpath)).getText());
     }
 
-//    public void checkText(String labelName, String expected) {
-//        String textSelector = String.format("//span[text()='%s']/ancestor::div[@class='ui-form__field']//div[@data-qa-file='UIFormRowError']", labelName);
-//        assertEquals(expected,
-//                driver.findElement(By.xpath(textSelector)).getText());
-//    }
-
-    public void clickElementByCss(String css) {
-        driver.findElement(By.cssSelector(css)).click();
+    public void checkErrorText(String fieldName, String expected) {
+        String textSelector = String.format("//span[text()='%s']/ancestor::div[@class='ui-form__field']//div[@data-qa-file='UIFormRowError']", fieldName);
+        assertEquals(expected,
+                driver.findElement(By.xpath(textSelector)).getText());
     }
 
-    public void clickElementByXpath(String xpath) {
-        driver.findElement(By.xpath(xpath)).click();
+    public void inputTextToField(String fieldName, String value) {
+        new TextInput(driver, initTextField(fieldName)).sendKeys(value);
     }
 
-//    @FindBy(xpath = "//*[contains(@class,'ui-input__column')]/input[@name='name']")
-//    WebElement name;
-//
-//    public void typeNameField(String value) {
-//        //Заполняем форму максиально быстро, пытаясь игнорировать анимацию страницы
-//        wait.ignoring(StaleElementReferenceException.class)
-//                .ignoring(ElementNotInteractableException.class)
-//                .until(d -> {
-//                    name.sendKeys(value);
-//                    return true;
-//                });
-//    }
-//
-//    public void checkNameField(String value){
-//        name.sendKeys(Keys.ENTER);
-//        assertEquals(value,name.getAttribute("value"));
-//    }
+    private WebElement initTextField(String fieldName) {
+        String textInputSelector = String.format("//*[@class='ui-input__label'][span[contains(text(),'%s')]]", fieldName);
+        return driver.findElement(By.xpath(textInputSelector));
+    }
+
+    public void clearField(String fieldName) {
+        WebElement textField = initTextField(fieldName);
+        textField.clear();
+    }
 }

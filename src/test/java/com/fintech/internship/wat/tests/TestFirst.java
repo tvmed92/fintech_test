@@ -16,8 +16,8 @@ public class TestFirst extends BaseRunner {
         vacancies.clickElementByName("email");
         vacancies.clickElementByName("phone");
         vacancies.clickElementByName("socialLink0");
-        vacancies.clickElementByCss("svg.ui-icon-checkbox.ui-checkbox__icon");
-        vacancies.clickElementByXpath("//button[span[@class='Button__content_3MlYx']]");
+        vacancies.clickCheckBox();
+        vacancies.clickSendButton();
 
         for (int i = 1; i <= 6; i++) {
             vacancies.checkText("(//div[@data-qa-file='UIFormRowError'])[" + i + "]", "Поле обязательное");

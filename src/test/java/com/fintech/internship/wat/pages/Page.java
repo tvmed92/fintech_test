@@ -1,19 +1,10 @@
 package com.fintech.internship.wat.pages;
 
 import com.fintech.internship.wat.app.TestApplication;
-import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.time.Duration;
-import java.util.List;
-import java.util.Set;
-
-import static org.junit.Assert.assertEquals;
 
 public class Page {
 
