@@ -19,6 +19,19 @@ public class TinkoffMobilePage extends Page {
         isLoadedByTitleContains("Тарифы Тинькофф Мобайла");
     }
 
+    @Override
+    public void switchToTab(String windowTitle) {
+        wait.until(d -> {
+            boolean check = false;
+            for (String title : driver.getWindowHandles()) {
+                driver.switchTo().window(title);
+                System.out.println(d.getTitle());
+                check = d.getTitle().equals(windowTitle);
+            }
+            return check;
+        });
+    }
+
     public void clickElement(String xpath) {
         driver.findElement(By.xpath(xpath)).click();
     }

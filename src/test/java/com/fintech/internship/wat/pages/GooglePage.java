@@ -40,13 +40,13 @@ public class GooglePage extends Page{
                             break;
                         }
                     }
-//                    Set<String> ids = driver.getWindowHandles();
-//                    ids.forEach(id -> {
-//                        if (!id.equals(driver.getWindowHandle())) {
-//                            driver.switchTo().window(id);
-//                            logger.info("Переключились на вкладку" + driver.getTitle());
-//                        }
-//                    });
+                    Set<String> ids = driver.getWindowHandles();
+                    ids.forEach(id -> {
+                        if (!id.equals(driver.getWindowHandle())) {
+                            driver.switchTo().window(id);
+                            logger.info("Переключились на вкладку" + driver.getTitle());
+                        }
+                    });
                     return isLoadedByTitleContains(requestItem);
                 });
     }

@@ -46,7 +46,7 @@ public class TinkoffVacanciesPage extends Page {
     }
 
     private WebElement initTextField(String fieldName) {
-        String textInputSelector = String.format("//*[@class='ui-input__label'][span[contains(text(),'%s')]]", fieldName);
+        String textInputSelector = String.format("//*[@class='ui-input__label'][//span[contains(text(),'%s')]]", fieldName);
         return driver.findElement(By.xpath(textInputSelector));
     }
 

@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class CheckBox extends BaseElement {
-    private static By activeElementLocator = By.cssSelector("[data-qa-type='uikit/checkbox']");
+    private static By activeElementLocator = By.cssSelector("[data-qa-type='uikit/clickable']");
     private WebElement checkBox;
 
     public CheckBox(WebDriver enclosedDriver, WebElement enclosedElement) {

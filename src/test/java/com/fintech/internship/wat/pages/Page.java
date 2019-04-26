@@ -30,11 +30,6 @@ public class Page {
                 driver.switchTo().window(title);
                 System.out.println(d.getTitle());
                 check = d.getTitle().equals(windowTitle);
-//                if (check) {
-//                    driver.close();
-//                    logger.info("Закрыли вкладку Поиск в Google");
-//                    break;
-//                }
             }
             return check;
         });
